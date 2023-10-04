@@ -1,8 +1,8 @@
 {
-function playGame(playerInput){
-    clearMessages();
+const playGame = function(playerInput){
+  clearMessages();
 
-function getMoveName(argMoveId){
+ const getMoveName = function(argMoveId){
     if (argMoveId === 1) {
         return 'kamień';
     } else if (argMoveId === 2) {
@@ -13,23 +13,20 @@ function getMoveName(argMoveId){
         printMessage('Nie znam ruchu o id ' + argMoveId + '.');
         return 'nieznany ruch';
     }
-}
+ };
 
-const randomNumber = Math.floor(Math.random() * 3 + 1);
+ const randomNumber = Math.floor(Math.random() * 3 + 1);
+ const computerMove = getMoveName(randomNumber);
 
-console.log('Wylosowana liczba to: ' + randomNumber);
+ console.log('Wylosowana liczba to: ' + randomNumber);
+ printMessage('Mój ruch to: ' + computerMove);
 
-const computerMove = getMoveName(randomNumber);
+ console.log('Gracz wpisał: ' + playerInput);
+ const playerMove = getMoveName(playerInput);
 
-printMessage('Mój ruch to: ' + computerMove);
+ printMessage('Twój ruch to: ' + playerMove);
 
-console.log('Gracz wpisał: ' + playerInput);
-
-const playerMove = getMoveName(playerInput);
-
-printMessage('Twój ruch to: ' + playerMove);
-
-function displayResult(argComputerMove, argPlayerMove) {
+ const displayResult = function(argComputerMove, argPlayerMove){
     printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
   
     if (argComputerMove === argPlayerMove) {
@@ -49,9 +46,12 @@ function displayResult(argComputerMove, argPlayerMove) {
     } else {
       printMessage('Błąd! Wprowadź poprawny ruch.');
     }
-  }
-  displayResult(computerMove, playerMove);
-}
+  };
+
+ displayResult(computerMove, playerMove);
+
+};
+
 document.getElementById('play-rock').addEventListener('click', function(){
     playGame(1);
   });
@@ -61,6 +61,7 @@ document.getElementById('play-rock').addEventListener('click', function(){
   document.getElementById('play-scissors').addEventListener('click', function(){
     playGame(3);
   });
+  
 }
 
 
